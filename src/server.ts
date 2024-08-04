@@ -8,7 +8,7 @@ export async function connectDB() {
   try {
     await sequelize.authenticate();
     sequelize.sync();
-    console.log("[server]: Connection to DB succesful");
+    //console.log("[server]: Connection to DB succesful");
   } catch (error) {
     console.error(error);
   }

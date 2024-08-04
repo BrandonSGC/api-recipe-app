@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { getUserById } from "../controllers/user.controllers";
+import { getUserById, updateUser } from "../controllers/user.controllers";
+import { validateRequest } from "../middlewares/validateRequest";
+import { validateId } from "../middlewares/validateId";
 
 const router = Router();
 
-// TODO: Validate data with express-validator.
-// TODO: Create middleware to handle the input errors.
-router.get("/:id", getUserById);
+// TODO: Create isAuthenticated middleware
+
+router.get("/:id", validateId, validateRequest, getUserById);
+router.put("/:id", validateId, validateRequest, updateUser); // -> REQUIRES AUTHENTICATION
 
 export default router;
